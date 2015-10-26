@@ -274,8 +274,10 @@
             }
 
             Page.renderCourseDetails = function (course) {
+                // Hide the default view.
                 configuration.defaultPlaceholder.hide();
 
+                // Map all form values from the course object to the form.
                 var form = configuration.courseDetailsPlaceholder.find("form")[0];
                 $(form["id"]).val(course.id);
                 $(form["name"]).val(course.name);
@@ -283,14 +285,16 @@
                 $(form["year"]).val(course.year);
                 $(form["term"]).val(course.term);
 
-                // The panel header.
+                // Set the details panel top header text.
                 $(form).find('[name=title]').text(course.name);
 
                 // Render the registered students.
                 Page.renderCourseDetailsStudentList(course);
 
+                // Render and fill the student select list.
                 Page.renderCourseDetailsStudentSelectList();
 
+                // Display the details panel.
                 configuration.courseDetailsPlaceholder.fadeIn(500);
             }
 
